@@ -15,11 +15,14 @@ https://jp.mathworks.com/help/matlab/data-types_data-types.html
 
 - table
 	- 異なる型をもつことができる名前付きの列で構成された、表形式の配列
+	- https://jp.mathworks.com/help/matlab/matlab_prog/add-and-delete-table-rows.html
+	- https://qiita.com/kouichi-c-nakamura/items/6c6cd52ad62a0bf7ffb5
 - 構造体
 	- さまざまな型とサイズのデータを含む名前付きフィールドをもつ配列
 	- 定義は必要とせず動的にメンバが追加できる
 - セル配列
 	- セルと呼ばれるインデックス付きのデータコンテナをもつデータ型
+	- 配列連結演算子 [], cell 配列作成演算子 {}
 
 ### syntax
 
