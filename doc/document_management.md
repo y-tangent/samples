@@ -62,4 +62,5 @@ listen_addresses='*'
 
 ## フロントエンド
 
-- excel db
+- ブラウザ
+- excel
