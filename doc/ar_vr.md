@@ -56,3 +56,42 @@ https://vron.jp/2016/11/27/post-529/
     - PCに Plex Media Server をインストール
   - 使い方
     - Oculus Go で PLEXアプリ を起動しメディアファイルを選択する
+
+##  wearable devices
+触覚デバイス
+fove
+NEC 展示会
+
+振動モータ ドライバチップ
+数パターン
+50 - 100 円
+小型の振動モータ
+ジグビ	UART
+
+スマフォ装着して振動でよくないか？とりあえずiphoneアプリを作成する
+https://qiita.com/FumihikoSHIROYAMA/items/a754f77c41b585c90329
+TCP/IPだとLANで接続するのが面倒なのでブルートゥースが一番手っ取り早いか(Webサービスでもよいか)
+OculusGo Androidアプリ -> iphone
+
+http://unrealengine.hatenablog.com/entry/2018/05/04/232708
+> UE4のバージョンはUE4.19以降が正式にOculus Goに対応したバージョンとなっている
+
+OpenFrameworks
+
+## UE4 Datasmith
+
+UE4
+https://area.autodesk.jp/column/tutorial/3dsmax-ue4-viz/01-whats-unrealstudio/
+Unreal Studio - Datasmith
+https://docs.unrealengine.com/en-US/Studio/Unreal-Datasmith/Datasmith
+https://docs.unrealengine.com/en-us/Studio/Unreal-Datasmith/Datasmith-Supported-Software-and-File-Types
+
+https://grabcad.com/library/tata-ace-with-tutorial-video-1
+rootノード x軸 270度
+
+Unity
+CAD Importer Unity Proのライセンス Windows
+pixyz
+  https://blogs.unity3d.com/jp/2018/03/06/unity-partners-with-pixyz/
+
+## UE4アプリのOculusGo動作確認方法
