@@ -57,6 +57,9 @@ https://vron.jp/2016/11/27/post-529/
   - 使い方
     - Oculus Go で PLEXアプリ を起動しメディアファイルを選択する
 
+### Oculus Rift
+PCが必要。PCとOculus Riftでどのような分担をしているのか確認。
+
 ##  wearable devices
 触覚デバイス
 fove
@@ -95,3 +98,7 @@ pixyz
   https://blogs.unity3d.com/jp/2018/03/06/unity-partners-with-pixyz/
 
 ## UE4アプリのOculusGo動作確認方法
+- VR Templateでデプロイ
+- そこにDatasmithでインポートしたものを配置してデプロイ
+
+## 映像からの3Dモデル自動生成

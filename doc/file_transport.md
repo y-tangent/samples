@@ -14,10 +14,9 @@ http://ser1zw.hatenablog.com/entry/2014/10/19/051134
 http://www.graviness.com/temp/pw_creator/
 ```
 
-7-Zipが使えない環境はWindows標準コマンドのMAKECABで分割する方法があるが、機械的にバイナリでスプリットしているわけではなさそう。
-
-適当なフリーソフト
-https://www.vector.co.jp/soft/winnt/util/se166117.html
+zipcrypto ならWindows標準で解凍が可能。
+zipファイルをエクスプローラで開き(右クリック->プログラムから開く->エクスプローラ)、
+ディレクトリをコピー->解凍場所にペースト->パスワード入力
 
 - join
 
@@ -28,3 +27,7 @@ COPY /B split_1+split_2+…split_n join_file_name
 ```
 COPY /B split_* join_file_name
 ```
+
+## timestamp
+Neo FileTimeChange
+画像のメタデータである撮影日時の変更も可能
