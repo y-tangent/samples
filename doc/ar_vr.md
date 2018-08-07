@@ -6,13 +6,18 @@ https://www.asukanet.co.jp/
 
 ## vr
 
+Comparison of virtual reality headsets
+https://en.wikipedia.org/wiki/Comparison_of_virtual_reality_headsets
+
 HMD種類一覧
 https://vron.jp/2016/11/27/post-529/
 
 
-|カテゴリ|名前|dof|
+|Name|Release Date|HW|OS|DoF|Type|FPS|Resolution|Price|
 |---|
-|aa|bb|cc|
+|Oculus Rift|2016-3-28|-|-|6|PC|90|1080x1200|$399|
+|PlayStation VR|2016-10-1|-|-|6|Console|120|960x1080|$299|
+|Oculus Go|2018-5-1|Snapdragon 821|-|3|Standalone |60-72|1280x1440|$249(64GB)|
 
 
 ### Oculus Go
@@ -60,6 +65,11 @@ https://vron.jp/2016/11/27/post-529/
 ### Oculus Rift
 PCが必要。PCとOculus Riftでどのような分担をしているのか確認。
 
+https://www.digitaltrends.com/virtual-reality/oculus-rift-vs-oculus-go/
+https://www.technologyreview.com/s/526531/oculus-rift/
+NVIDIA GeForce GTX 960
+
+
 ##  wearable devices
 触覚デバイス
 fove
@@ -75,6 +85,7 @@ NEC 展示会
 https://qiita.com/FumihikoSHIROYAMA/items/a754f77c41b585c90329
 TCP/IPだとLANで接続するのが面倒なのでブルートゥースが一番手っ取り早いか(Webサービスでもよいか)
 OculusGo Androidアプリ -> iphone
+スワイプで水平方向移動、スマフォが縦なら上下スワイプで垂直方向移動
 
 http://unrealengine.hatenablog.com/entry/2018/05/04/232708
 > UE4のバージョンはUE4.19以降が正式にOculus Goに対応したバージョンとなっている
