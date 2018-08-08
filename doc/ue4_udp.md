@@ -13,7 +13,7 @@ https://github.com/getnamo/socketio-client-ue4
 jsonも使える便利なやつだが、名前のとおりsocketioのクライアント用
 
 https://github.com/getnamo/udp-ue4
-あまり使われていないようだが、簡単に送受信ができるようになるudp wrapper。
+あまり使われていないようだが、簡単に送受信ができるようになるudp wrapper。リリースは4.19のみ。
 
 ## Sample
 ue4で座標(x,y)を受信する。フォーマットはcsv(またはjson)文字列でクライアントは任意。
@@ -52,3 +52,4 @@ while True:
 ### server
 
 Copy Plugins folder into Project root
+BPアクターにUDPコンポーネントを持たせて、IP/Port設定、受信イベントのグラフを作成する
