@@ -17,6 +17,28 @@ git config --global http.postBuffer 5M
 git checkout refs/tags/1.7.0
 ```
 
+## debug build
+
+```
+cp catkin_make_release catkin_make_debug
+```
+-DCMAKE_BUILD_TYPE=Release -> Debug
+
+### attach
+
+```
+rosnode info /node_name | grep id
+sudo gdb
+attach pid
+b filename:line
+c
+set logging on
+p value_name
+set logging off
+```
+
+https://askubuntu.com/questions/41629/after-upgrade-gdb-wont-attach-to-process
+
 ## node
 
 - Setup
@@ -44,26 +66,63 @@ git checkout refs/tags/1.7.0
     - pure_pursit
     - twist_filter
 
+### vel_pose_connect
+- input
+  - /sim_pose
+  - /sim_velocity
+- output
+  - /pose_relay(to /current_pose)
+  - /vel_relay(to /current_velocity)
+
 ### lidar_euclidean_cluster_detect
 - input
+  - /points_raw
 - output
+  - cloud_clusters
 - param
   - output_frame
     - frameを持つアウトプットのframeを指定する
       - /bounding_boxes, /cluster_centroids, /cloud_clusters
     - デフォルト値は`velodyne`
+    - 指定されたframeにtransformしてメッセージに格納する
+  - vectormap_frame
+    - vector_map_server/is_way_area
+- method
+  - segmentByDistance
 
 - worldとmap
+
+### way_planner
+- input
+- output
+  - /lane_waypoints_array
 
 ### dp_planner
 - input
   - /cloud_clusters
 - output
   - topic
-    - current_behavior: 直値
+    - /current_behavior: 直値
+    - /final_waypoint
     - behavior_state: rViz用
 - param
-- beheiver
+- method
+  - open planner
+    - LocalPlannerH::DoOneStep
+    - LocalPlannerH::GenerateBehaviorState
+      - current_behaviorに反映する値を生成
+      - ForwardState::GetNextState()
+        - nh.getParam("/dp_planner/enableFollowing", params.enableFollowing);
+        - bFullyBlockは、CalculateImportantParameterForDecisionMaking で設定
+
+  ```cpp:BehaviorStateMachine.cpp
+    else if(m_pParams->enableFollowing
+        && pCParams->bFullyBlock)
+        return FindBehaviorState(FOLLOW_STATE);
+  ```
+
+    - TrajectoryCosts::DoOneStep
+    - LocalPlannerH::CalculateImportantParameterForDecisionMaking
 
 - frameは何を期待しているか
   - RvizPointコールバックでパブリッシュするフレームは2つとも`map`を指定している
@@ -77,6 +136,9 @@ git checkout refs/tags/1.7.0
     - `/dp_planner_tracked_boxes`にパブリッシュする
   - メインループ
     - m_TrackedClustersを`detected_polygons`にパブリッシュする
+      - `detected_polygons`は`visualization_msgs/Marker`メッセージなのでrVizビジュアライズ用
+  - Forward -> Follow の遷移確認
+  - behavior_state
 
   障害物があったときの振る舞い
   https://www.youtube.com/watch?v=FKM8v79X3_s
@@ -85,10 +147,20 @@ git checkout refs/tags/1.7.0
 
 ### ff_waypoint_follower
 - input
+  - /current_behavior
+  - /final_waypoint
   - /current_velocity
 - output
   - sim_pose
   - sim_velocity
+- param
+- method
+  - open planner
+    - TrajectoryFollower::VeclocityControllerUpdate
+
+- behaver
+  - Localization and Status Reading Part
+  - Path Following Part
 
 ## UE4 連携
 UDPSender/Receiver
