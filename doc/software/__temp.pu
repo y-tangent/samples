@@ -1,0 +1,44 @@
+@startuml
+
+' openplanner
+class PlannerH
+class LocalPlannerH
+class BehaviorStateMachine
+class BehaviorState
+note left : INITIAL_STATE, WAITING_STATE, FORWARD_STATE, STOPPING_STATE,\nEMERGENCY_STATE,TRAFFIC_LIGHT_STOP_STATE,TRAFFIC_LIGHT_WAIT_STATE,\nSTOP_SIGN_STOP_STATE, STOP_SIGN_WAIT_STATE, FOLLOW_STATE,\nLANE_CHANGE_STATE, OBSTACLE_AVOIDANCE_STATE, GOAL_STATE, FINISH_STATE
+class TrajectoryCosts
+note left : DetectedObject を入力として判断する
+class TrajectoryCost {
+  int index;
+  int relative_index;
+  double closest_obj_velocity;
+  double distance_from_center;
+  double priority_cost; //0 to 1
+  double transition_cost; // 0 to 1
+  double closest_obj_cost; // 0 to 1
+  double cost;
+  double closest_obj_distance;
+
+  int lane_index;
+  double lane_change_cost;
+  double lateral_cost;
+  double longitudinal_cost;
+  bool bBlocked;
+  std::vector<std::pair<int, double> > lateral_costs;
+}
+class TrajectoryFollower
+
+' dp_planner
+class PlannerX
+
+' ff_waypoint_follower
+class FFSteerControl
+
+' relation
+PlannerX *-- LocalPlannerH
+LocalPlannerH o-- BehaviorStateMachine
+LocalPlannerH *-- TrajectoryCosts
+FFSteerControl *-- LocalPlannerH
+FFSteerControl *-- TrajectoryFollower
+
+@enduml
