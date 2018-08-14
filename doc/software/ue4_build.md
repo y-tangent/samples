@@ -37,3 +37,10 @@ http://api.unrealengine.com/JPN/Programming/UnrealArchitecture/StringHandling/
 ## Frame
 https://api.unrealengine.com/udk/Three/ChangingUnitsJP.html
 1 Unreal Unit = １cm
+
+# foundation
+
+## setting value
+Detailsでの設定とBlueprint内での設定の違いと格納先の整理
+
+## CapsuleComponent

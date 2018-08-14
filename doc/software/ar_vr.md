@@ -80,6 +80,8 @@ NEC 展示会
 50 - 100 円
 小型の振動モータ
 ジグビ	UART
+Mesh
+http://meshprj.com/jp/
 
 スマフォ装着して振動でよくないか？とりあえずiphoneアプリを作成する
 https://qiita.com/FumihikoSHIROYAMA/items/a754f77c41b585c90329

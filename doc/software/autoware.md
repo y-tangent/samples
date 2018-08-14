@@ -52,19 +52,13 @@ https://askubuntu.com/questions/41629/after-upgrade-gdb-wont-attach-to-process
   - Velodyne VLP-16
 - Computing
   - Localization
-    - ndt_matching
     - vel_pose_connect
   - Detection
     - lidar_euclidean_cluster_detect
   - Mission Planning
-    - lane_rule
-    - lane_stop
-    - lane_select
     - way_planner
     - dp_planner
     - ff_waypoint_follower
-    - pure_pursit
-    - twist_filter
 
 ### vel_pose_connect
 - input
@@ -130,13 +124,12 @@ https://askubuntu.com/questions/41629/after-upgrade-gdb-wont-attach-to-process
 - dp_plannerの機能でrVizのPublish Pointを使って障害物を置く
   - rVizコールバック
     - rVizがパブリッシュするトピックは`/clicked_point`
-      - frame_idが`world`にも関わらず`map`の座標を渡している
-      - ただしframe_idをみておらず、`map`として扱われている
     - ポイントは形状を持ったCloudClusterArrayとして扱い、m_TrackedClustersに反映する
     - `/dp_planner_tracked_boxes`にパブリッシュする
   - メインループ
     - m_TrackedClustersを`detected_polygons`にパブリッシュする
       - `detected_polygons`は`visualization_msgs/Marker`メッセージなのでrVizビジュアライズ用
+        - rVizの項目名は`Tracked Contours`。Namespacesでもフィルタしたい
   - Forward -> Follow の遷移確認
   - behavior_state
 
@@ -166,6 +159,27 @@ https://askubuntu.com/questions/41629/after-upgrade-gdb-wont-attach-to-process
 UDPSender/Receiver
 Camera
 Scenario
+
+### input
+`current_pose`
+
+PoseStamped.msg
+```msg:PoseStamped.msg
+Header header
+Pose pose
+```
+
+Pose.msg
+```msg:Pose.msg
+Point position
+Quaternion orientation
+```
+
+### method
+- SetWorldLocation
+  - frame map -> world
+- SetWorldRotation
+  - z,w -> yaw
 
 ### UE4 -> Autoware
 - frame: velodyne
