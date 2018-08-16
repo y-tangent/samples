@@ -313,6 +313,16 @@ Quaternion orientation
   - sim_velocity
 - frame: map
 
+### Scenario
+- 自車の制御はAutowareのパラメータ依存になる
+  - シナリオからlaunchファイルを生成するイメージ
+- TrafficはUE4のアクターのパラメータとなる
+  - 1 Concrete Scenario 1 umap
+    - map切り替え時に保持したい情報はGameInstanceに保持
+  - or 実行時にシナリオを読み込んで動的にアクターを生成した方が、umap配置するよりやりやすいか？
+    - コンポーネントによってはBeginPlay初期化を
+- 分散処理
+
 ## 3D map
 map frame(平面直角座標系)で座標が格納されている。
 

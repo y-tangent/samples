@@ -18,8 +18,10 @@ https://blog.ltakeshi.info/gnu-linux-with-nvenc/
 - Ubuntu
 
 ## Filmora
+- 動画編集ソフト
 - Mac/Windows対応
 - 有料
+- 二つの動画を一つの動画にするのに利用
 
 # Video editing software
 
