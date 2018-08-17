@@ -44,3 +44,25 @@ https://api.unrealengine.com/udk/Three/ChangingUnitsJP.html
 Detailsでの設定とBlueprint内での設定の違いと格納先の整理
 
 ## CapsuleComponent
+
+## Resource
+
+テンプレートはプログラムファイルのTemplateResourcesに格納されている。
+C:\Program Files\Epic Games\UE_4.19\Templates\TemplateResources\Standard
+- Mannequin
+- Vehicle
+
+テンプレート生成するとContentディレクトリ内のものがコピーされる。
+
+## camera
+
+Set View Terget with Blend
+
+## one event multiple action
+
+https://forums.unrealengine.com/development-discussion/blueprint-visual-scripting/529-do-multiple-things-on-event-begin-play
+`Sequence`を利用
+
+## global value
+- Game Instance のブループリントを作成して変数を持たせる
+- Get Game Instance でインスタンスを取得しキャストして扱う
