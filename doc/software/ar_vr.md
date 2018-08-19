@@ -124,3 +124,7 @@ PenTile
 耳の裏に電流 ジェットコースタ DCEXPO
 GearVR
 3D 深度を考慮した3D映像。ピントを複数用意
+- Gatebox
+  - https://www.youtube.com/watch?v=fA1PZj-2SZ0
+  - https://www.youtube.com/watch?v=pSNfuPJc_T8
+  - スマートスピーカー + 3Dディスプレイ + Lineサービス

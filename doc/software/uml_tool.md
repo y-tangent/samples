@@ -33,8 +33,12 @@ http://plantuml.com
 
 - 理想は github, gitlab, Atom の Markdown で plantuml が画像で表示されること
 - 現状はそれができないので plantuml記述をコメントアウトして画像に差し替える
+  - -> umlの編集が面倒すぎるので画像元データとして対にして残した方がよい
+    - クロスプラットフォームであること、本質のみを記述できること、の利点は残っている
 - plantuml-viewer は 一番上に出てくるumlブロックの表示のみに対応している
   - 複数のumlブロックがある場合は、わざわざ別のファイルにコピペしてpreviewしなけばならない
+- 設定のCharsetは`utf-8`,ctrl+alt+p で表示
+- `newpage` で図の分割が可能
 
 ### install
 

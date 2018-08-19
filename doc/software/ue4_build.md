@@ -47,10 +47,12 @@ Detailsでの設定とBlueprint内での設定の違いと格納先の整理
 
 ## Resource
 
-テンプレートはプログラムファイルのTemplateResourcesに格納されている。
-C:\Program Files\Epic Games\UE_4.19\Templates\TemplateResources\Standard
-- Mannequin
-- Vehicle
+サンプル・テンプレートはプログラムファイルに格納されている。
+- C:\Program Files\Epic Games\UE_4.19\Templates\TemplateResources\Standard
+  - Mannequin
+  - Vehicle
+- C:\Program Files\Epic Games\UE_4.19\Samples
+  - StarterContent
 
 テンプレート生成するとContentディレクトリ内のものがコピーされる。
 
