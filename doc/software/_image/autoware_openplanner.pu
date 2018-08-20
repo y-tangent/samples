@@ -33,6 +33,40 @@ package openplanner <<Node>> {
     std::vector<std::pair<int, double> > lateral_costs;
   }
   class TrajectoryFollower
+  class PlanningParam {
+  PlanningParams() {
+		maxSpeed = 3;
+		minSpeed = 0;
+		planningDistance = 10000;
+		microPlanDistance = 30;
+		carTipMargin = 4.0;
+		rollInMargin = 12.0;
+		rollInSpeedFactor = 0.25;
+		pathDensity = 0.25;
+		rollOutDensity = 0.5;
+		rollOutNumber = 4;
+		horizonDistance = 120;
+		minFollowingDistance = 35;
+		minDistanceToAvoid = 15;
+		maxDistanceToAvoid = 5;
+		speedProfileFactor = 1.0;
+		smoothingDataWeight = 0.45;
+		smoothingSmoothWeight = 0.3;
+		smoothingToleranceError = 0.05;
+
+		verticalSafetyDistance = 0.0;
+		horizontalSafetyDistancel = 0.0;
+
+		enableHeadingSmoothing = false;
+		enableSwerving = false;
+		enableFollowing = false;
+		enableTrafficLightBehavior = false;
+		enableLaneChange = false;
+		enableStopSignBehavior = false;
+		enabTrajectoryVelocities = false;
+
+		enableDynamicPlannerS = false;
+	}
 }
 
 LocalPlannerH o-- BehaviorStateMachine

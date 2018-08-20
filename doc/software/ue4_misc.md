@@ -94,3 +94,41 @@ https://www.slideshare.net/masahikonakamura50/presentations
 In Game ではなくコンストラクション中に動作するスクリプト
 
 インスタンスをどのように配置するのか
+
+## csv出力
+Rama's Victory Blueprint Library
+https://github.com/EverNewJoy/VictoryPlugin
+リリースバイナリは以下の公式フォーラムのリンクに存在する
+
+https://forums.unrealengine.com/development-discussion/blueprint-visual-scripting/4014-39-rama-s-extra-blueprint-nodes-for-you-as-a-plugin-no-c-required
+
+- FileIO__SaveStringTextToFile
+- FileIO__SaveStringArrayToFile
+
+単発のcsv出力は可能だが、連続した追加書き込みには対応していなさそう。
+プラグインのWriteFlagsを修正する必要がある。
+https://forums.unrealengine.com/development-discussion/c-gameplay-programming/61058-append-when-writing-to-a-file
+UnrealEngine-4.17.2-release\Engine\Source\Runtime\Core\Public\Misc\FileHelper.h
+
+```
+/**
+ * Save a binary array to a file.
+ */
+static bool SaveArrayToFile(TArrayView<const uint8> Array, const TCHAR* Filename, IFileManager* FileManager=&IFileManager::Get(), uint32 WriteFlags = 0);
+
+/**
+ * Write the FString to a file.
+ * Supports all combination of ANSI/Unicode files and platforms.
+ */
+static bool SaveStringToFile( const FString& String, const TCHAR* Filename, EEncodingOptions::Type EncodingOptions=EEncodingOptions::AutoDetect, IFileManager* FileManager=&IFileManager::Get(), uint32 WriteFlags = 0 );
+```
+
+UE4でファイルIOは面倒なのでUDP送信して受信側でファイル保存を行う
+正確な加速度を得るにはAutowareでメッセージのタイムスタンプから計算する
+csvファイル出力もAutowareのノード出力のリダイレクトでよいのでは。
+
+## コリジョンの持ち方
+スタティックメッシュ
+スケルタルメッシュ
+自動生成(詳細度)
+カスタム設定
