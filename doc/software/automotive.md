@@ -67,6 +67,8 @@ AVT Symposium 2017 Test Specifications for HAD_Folien .pdf
 コンクリートシナリオからue4へのデータ生成を段階的に行っていきたい。
 
 http://shinkokyo.or.jp/casest1.html
+フラッシュはタイムラインで移動を制御している
+
 ITARDA
 CATIA: Dassault Systemes
 
@@ -75,3 +77,14 @@ CATIA: Dassault Systemes
 - 世に出ているものの調査
 
 迷子にならないように当初の目的も含め地図をかく
+
+- Pegasusは実走行を基にした検証用システム
+- 仕様からシナリオを用意したい場合
+  - Logical Scenario / Concrete Scenario を記述
+  - シミュレート機能あり
+
+ue4 2D: Paper2D
+http://katze.hatenablog.jp/entry/2016/03/04/223927
+
+https://qiita.com/kanehama/items/972b16b2e1b0df8e1da8
+http://sutara79.hatenablog.com/entry/2016/09/06/111411

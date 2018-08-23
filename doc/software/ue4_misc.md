@@ -132,3 +132,10 @@ csvファイル出力もAutowareのノード出力のリダイレクトでよい
 スケルタルメッシュ
 自動生成(詳細度)
 カスタム設定
+
+## Lighting
+
+### DirectionalLight
+
+> [Atmosphere Sun Light] にチェックを入れると、 Rotation モード (E) を使ってライトを回転させながら、太陽の位置を制御することができます。
+方向でライトの位置が決定する

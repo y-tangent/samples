@@ -244,6 +244,28 @@ pub_BehaviorState.publish(behavior);
   https://www.youtube.com/watch?v=7YQFbqOJOXM
   https://www.youtube.com/watch?v=afxaxOHCuVE
 
+```
+  CAR_BASIC_INFO()
+  {
+  	  model 				= SimulationCar;
+  	  turning_radius 		= 5.2;
+  	  wheel_base			= 2.7;
+  	  max_speed_forward		= 3.0;
+  	  min_speed_forward		= 0.0;
+  	  max_speed_backword	= 1.0;
+  	  max_steer_value		= 660;
+  	  min_steer_value		= -660;
+  	  max_brake_value		= 0;
+  	  min_brake_value		= 0;
+  	  max_steer_angle		= 0.42;
+  	  min_steer_angle		= 0.42;
+  	  length				= 4.3;
+  	  width					= 1.82;
+  	  max_acceleration		= 1.5; // m/s2
+  	  max_deceleration		= -1.5; // 1/3 G
+  }
+```
+
 - 疑問点
   - レーンを誰がどう意識しているかがわからない
   - 蛇行運転する問題の対処
@@ -277,6 +299,9 @@ pub_BehaviorState.publish(behavior);
       - シミュレートした位置・速度をpublish
     - Path Following Part
       - TrajectoryFollowerで要求速度・ステアを計算(結果は次回メインループで利用)
+
+#### オドメトリ
+https://github.com/open-rdc/autonomous-vehicle/wiki/%E8%87%AA%E5%B7%B1%E4%BD%8D%E7%BD%AE%E6%8E%A8%E5%AE%9A
 
 ## UE4 連携
 UDPSender/Receiver

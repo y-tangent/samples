@@ -1,0 +1,11 @@
+@startuml
+
+node aaa {
+  rectangle Specification
+  rectangle Flash
+}
+
+Simulator
+Generator
+
+@enduml
