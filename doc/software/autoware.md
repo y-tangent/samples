@@ -39,6 +39,49 @@ set logging off
 
 https://askubuntu.com/questions/41629/after-upgrade-gdb-wont-attach-to-process
 
+## overview
+
+TIER IV ACADEMY Day3 Autoware 演習 version 1.4
+
+### mode
+
+- 実機
+- シミュレーション
+  - シミュレーション走行
+  - 再現走行(bag)
+
+AutowareRider
+AutowareRoute
+
+### option
+
+- vel_pose_connect
+  - Simulation Mode
+    - OFF
+      - /ndt_pose(Optional) -> /current_pose
+      - /estimate_twist(Optional) -> /current_velocity
+    - ON
+      - /sim_pose -> /current_pose
+      - /sim_velocity -> /current_velocity
+- way_planner
+  - Velocityies Source
+    - Odometry
+    - Autoware
+    - Car Info
+  - Map Source
+    - Autoware
+    - Folder
+    - KML
+- dp_planner
+  - Velocityies Source
+  - Map Source
+- ff_waypoint_follower
+  - Control Signal
+    - Simulation
+    - Vehicle
+    - Autoware
+    - Robot
+
 ## node
 
 - Setup
@@ -302,6 +345,66 @@ pub_BehaviorState.publish(behavior);
 
 #### オドメトリ
 https://github.com/open-rdc/autonomous-vehicle/wiki/%E8%87%AA%E5%B7%B1%E4%BD%8D%E7%BD%AE%E6%8E%A8%E5%AE%9A
+
+## lane_planner
+
+### yunjeong kim
+
+https://www.youtube.com/channel/UChmzOCXExJXr0ueTIDzUSIA
+
+- Lane Change of Autoware
+  - https://www.youtube.com/watch?v=C_4rXvKPWMY
+  - way_plannerとdp_plannerを使った静的なレーン変更
+- Lane change of Autoware with Obstacle
+  - https://www.youtube.com/watch?v=O0OtSy9pS7M
+  - way_plannerとdp_plannerを使った動的なレーン変更
+- Making vector map using maptools
+  - https://www.youtube.com/watch?v=2pmyEr8qGkE
+- Local path planning and following using Gazebo with Autoware
+  - https://www.youtube.com/watch?v=YwNVhZdf91A
+
+### Hatem Darweesh
+
+https://www.youtube.com/user/hatemtem
+
+### Shinpei KATO
+
+https://www.youtube.com/channel/UCquPzu-GDzcIZf3jIC6bAkQ
+
+- Planning with wf_simulator
+  - https://www.youtube.com/watch?v=HwB2NKqj2yg
+
+sim_velocity/sim_poseは毎フレーム？パブリッシュされている。
+速度が0になっている
+/pure_pursuit -> (/twist_raw) -> /twist_filter -> (twist_cmd) -> /wf_simulator -> (/sim_pose), (/sim_velocity)
+/twist_rawへのパブリッシュがない、何がトリガでパブリッシュされるか？
+-> メインループでパブリッシュしている
+
+```cpp:pure_pursuit_core.cpp
+if (!is_pose_set_ || !is_waypoint_set_ || !is_velocity_set_ || !is_config_set_)
+{
+  ROS_WARN("Necessary topics are not subscribed yet ... ");
+  loop_rate.sleep();
+  continue;
+}
+```
+is_waypoint_set_ が false のため常にcontinueになっている。
+`final_waypoints`のパブリッシュがきていないのが原因。
+
+```cpp:path_select.cpp
+ros::Subscriber twist_sub = nh.subscribe("temporal_waypoints", 1, callback);
+_pub = nh.advertise<autoware_msgs::lane>("final_waypoints", 1000,true);
+```
+
+/velocity_set が /temporal_waypoints に書き込むことを期待している。
+しかし、velocity_setがそこに書き込んでいる気配がない。
+
+結論として、lattice_plannerのvelocity_setを使用しなければならなかったのに、aster_plannerのものを使用していた。
+plannerのノードは基本的にはセットのことが多いため注意する。
+
+lane_stopでrViz上でwaypointが変更されることは確認できた。
+
+
 
 ## UE4 連携
 UDPSender/Receiver
