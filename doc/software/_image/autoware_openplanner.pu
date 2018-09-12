@@ -2,6 +2,8 @@
 
 ' openplanner
 package openplanner <<Node>> {
+  note "17.4 k" as openplanner
+
   class PlannerH
   note bottom : 軌道生成機能を持つ
   class LocalPlannerH
@@ -78,6 +80,8 @@ TrajectoryCosts "1" *-- "*" TrajectoryCost
 
 ' dp_planner
 package dp_planner <<Node>> {
+  note "1.8 k" as dp_planner
+
 class PlannerX
 }
 
@@ -86,11 +90,22 @@ PlannerX *-- BehaviorState
 
 ' ff_waypoint_follower
 package ff_waypoint_follower <<Node>> {
+  note "1.6 k" as ff_waypoint_follower
+
   class FFSteerControl
 }
 
 FFSteerControl *-- LocalPlannerH
 FFSteerControl *-- TrajectoryFollower
 FFSteerControl *-- BehaviorState
+
+' way_planner
+package way_planner <<Node>> {
+  note "1.4 k" as way_planner
+
+  class way_planner_core
+}
+
+way_planner_core *-- PlannerH
 
 @enduml
